@@ -18,6 +18,8 @@ s.cookies["session"] = os.getenv("AOC_SESSION")
 r = s.get(f"https://adventofcode.com/{year}/day/{day}")
 soup = BeautifulSoup(r.text, features="html.parser")
 
+example = "no idea"
+
 for code in soup.find_all("code"):
     if code.text.count("\n") >= 5:
         example = code.text.strip()
