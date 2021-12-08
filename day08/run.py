@@ -112,21 +112,18 @@ for line in src:
             part1 += 1
 
     digits = {}
-    rdigits = {}
 
     for d in scram:
         if len(d) == 2:
             digits[d] = {1}
-            rdigits[1] = d
+            one = d
         elif len(d) == 4:
             digits[d] = {4}
-            rdigits[4] = d
+            four = d
         elif len(d) == 3:
             digits[d] = {7}
-            rdigits[7] = d
         elif len(d) == 7:
             digits[d] = {8}
-            rdigits[8] = d
         elif len(d) == 6:
             digits[d] = {0, 6, 9}
         elif len(d) == 5:
@@ -134,17 +131,18 @@ for line in src:
         else:
             assert "wut"
 
+    # reduce based on if it is a subset of 1
     for d in scram:
-        if rdigits[1].issubset(d):
+        if one.issubset(d):
             digits[d].difference_update({2, 5, 6})
 
-    four = rdigits[4]
-
+    # four must be a subset of 9
     for c in get_choices(digits, 9):
         if four.issubset(c):
             digits[c] = {9}
             nine = c
 
+    # five must be a subset of nine
     for c in get_choices(digits, 5):
         if c.issubset(nine):
             digits[c] = {5}
