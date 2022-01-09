@@ -120,7 +120,7 @@ def make_part_list_rng(
     greater_than: t.Sequence[int],
     less_than: t.Sequence[int],
 ) -> t.List[int]:
-    pn = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    pn = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
     while True:
         for i in range(14):
